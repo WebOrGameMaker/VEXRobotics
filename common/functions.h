@@ -3,8 +3,6 @@
 
 using namespace vex;
 
-inertial InertialSensor(PORT7);
-
 void start() {
   Flywheel.setVelocity(300, percent);
   Intake.setVelocity(150, percent);

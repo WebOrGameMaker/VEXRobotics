@@ -22,9 +22,7 @@
 // Wings                digital_out   H               
 // IntakePistons        digital_out   G               
 // ---- END VEXCODE CONFIGURED DEVICES ----
-
 #include <../../common/controller.h>
-
 using namespace vex;
 
 competition Competition;

@@ -1,6 +1,3 @@
-#include "vex.h"
-#include "functions.h"
-
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
@@ -16,42 +13,49 @@
 // Wings                digital_out   H               
 // IntakePistons        digital_out   G               
 // ---- END VEXCODE CONFIGURED DEVICES ----
-
+#include <../../common/functions.h>
 using namespace vex;
+
+competition Competition;
 
 void pre_auton(void) {
   vexcodeInit();
-
-  InertialSensor.calibrate();
 }
 
-void usercontrol(void) {
+void auton(void) {
   start();
 
-  while (1) {
-    LF.spin(fwd, Controller1.Axis3.value() + Controller1.Axis4.value(), pct);
-    RF.spin(fwd, Controller1.Axis3.value() - Controller1.Axis4.value(), pct);
-
-    LM.spin(fwd, Controller1.Axis3.value() + Controller1.Axis4.value(), pct);
-    RM.spin(fwd, Controller1.Axis3.value() - Controller1.Axis4.value(), pct);
-
-    LB.spin(fwd, Controller1.Axis3.value() + Controller1.Axis4.value(), pct);
-    RB.spin(fwd, Controller1.Axis3.value() - Controller1.Axis4.value(), pct);
-    
-    if (Controller1.ButtonA.pressing()) Wings.set(true);
-    else if (Controller1.ButtonB.pressing()) Wings.set(false);
-    
-    if (Controller1.ButtonLeft.pressing()) IntakePistons.set(true);
-    else if (Controller1.ButtonRight.pressing()) IntakePistons.set(false);
-
-    wait(5, msec);
-  }
+  // drive forward 20 cm
+  // turn right 45 degrees
+  // drive backward 30 cm
+  // turn on flywheel for 25 seconds
+  // drive forward 10 cm
+  // turn right 90 degrees
+  // drive forward 20 cm
+  // turn left 60 degrees
+  // go forward 50 cm
+  // turn left 90 degrees
+  // open wings
+  // drive forward 50 cm
+  // close wings
+  // drive back 30 cm
+  // turn left 45 degrees
+  // drive forward 50 cm
+  // turn right 135 degrees
+  // open wings
+  // drive forward 50 cm
+  // close wings
+  // drive back 50 cm
+  // turn left 15 degrees
+  // open wings
+  // drive forward 50 cm
+  // close wings
+  // drive back 50 cm
 }
 
 int main() {
   // Set up callbacks for autonomous and driver control periods.
-  Competition.autonomous(autonomous);
-  Competition.drivercontrol(usercontrol);
+  Competition.autonomous(auton);
 
   // Run the pre-autonomous function.
   pre_auton();
