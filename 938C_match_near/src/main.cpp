@@ -37,25 +37,43 @@ void auton() {
   start();
 
   // open intake pistons
+  IntakePistons.set(true);
   // open wings
+  Wings.set(true);
   // drive forward 20 cm
   // turn left 45 degrees
+  drivetrainPID(200, -45);
   // drive forward 20 cm
+  drivetrainPID(200, 0);
   // outtake the match load
+  Intake.spin(reverse);
+  wait(500, msec);
+  Intake.stop();
   // retract intake pistons
+  IntakePistons.set(false);
   // drive forward 20 cm
+  drivetrainPID(200, 0);
   // drive backward 30 cm
   // turn left 60 degrees
+  drivetrainPID(-300, -60);
   // turn on intake
+  Intake.spin(forward);
   // drive forward 100 cm
+  drivetrainPID(1000, 0);
   // stop intake
+  Intake.stop();
   // turn right 100 degrees
+  drivetrainPID(0, 100);
   // turn on outtake
+  Intake.spin(reverse);
+  wait(500, msec);
+  Intake.stop();
   // turn 180 degrees
+  drivetrainPID(0, 180);
   // turn on intake
+  Intake.spin(forward);
   // drive forward 40 cm
-
-  return;
+  drivetrainPID(400, 0);
 }
 
 int main() {

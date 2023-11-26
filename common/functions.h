@@ -3,6 +3,10 @@
 
 using namespace vex;
 
+void wait() {
+  vex::
+}
+
 void start() {
   Flywheel.setVelocity(300, percent);
   Intake.setVelocity(150, percent);
