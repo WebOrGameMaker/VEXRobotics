@@ -10,17 +10,17 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// LF                   motor         5               
-// LM                   motor         17              
-// LB                   motor         4               
-// RF                   motor         19              
-// RM                   motor         18              
-// RB                   motor         20              
-// Intake               motor         13              
+// LF                   motor         2               
+// LM                   motor         13              
+// LB                   motor         18              
+// RF                   motor         1               
+// RM                   motor         17              
+// RB                   motor         16              
+// Intake               motor         8               
 // Flywheel             motor         3               
 // Controller1          controller                    
-// Wings                digital_out   H               
-// IntakePistons        digital_out   G               
+// Wings                digital_out   B               
+// IntakePistons        digital_out   A               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 #include <../../common/controller.h>
 using namespace vex;
@@ -34,26 +34,17 @@ void pre_auton(void) {
 void auton() {
   start();
 
-  // open intake pistons
-  // open wings
-  // drive forward 20 cm
-  // turn left 45 degrees
-  // drive forward 20 cm
-  // outtake the match load
-  // retract intake pistons
-  // drive forward 20 cm
-  // drive backward 30 cm
-  // turn left 60 degrees
-  // turn on intake
-  // drive forward 100 cm
-  // stop intake
-  // turn right 100 degrees
-  // turn on outtake
-  // turn 180 degrees
-  // turn on intake
-  // drive forward 40 cm
-
-  return;
+  IntakePistons.set(true);
+  drivePID(-1000, 0);
+  drivePID(-1500, -200);
+  drivePID(0, 1225);
+  Intake.spin(forward);
+  wait(500, msec);
+  Intake.stop();
+  IntakePistons.set(false);
+  drivePID(0, 2250);
+  drivePID(900, 0);
+  drivePID(-900, 0);
 }
 
 int main() {

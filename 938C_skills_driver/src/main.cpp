@@ -1,13 +1,13 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// LF                   motor         5               
-// LM                   motor         17              
-// LB                   motor         4               
-// RF                   motor         19              
-// RM                   motor         18              
-// RB                   motor         20              
-// Intake               motor         13              
+// LF                   motor         2               
+// LM                   motor         13              
+// LB                   motor         18              
+// RF                   motor         1               
+// RM                   motor         17              
+// RB                   motor         16              
+// Intake               motor         8               
 // Flywheel             motor         3               
 // Controller1          controller                    
 // Wings                digital_out   H               

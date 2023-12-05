@@ -1,3 +1,2 @@
-extern bool toggleDrivePID;
 //define function for drivetrain pid
-int drivetrainPID(int desiredValue, int desiredTurnValue);
+int drivePID(int desiredValue, int desiredTurnValue);
