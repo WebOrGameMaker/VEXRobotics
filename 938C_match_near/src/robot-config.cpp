@@ -15,10 +15,10 @@ motor RF = motor(PORT1, ratio6_1, false);
 motor RM = motor(PORT17, ratio6_1, false);
 motor RB = motor(PORT16, ratio6_1, false);
 motor Flywheel = motor(PORT3, ratio36_1, false);
-controller Controller1 = controller(primary);
 digital_out Wings = digital_out(Brain.ThreeWirePort.B);
 digital_out IntakePistons = digital_out(Brain.ThreeWirePort.A);
-motor Intake = motor(PORT8, ratio6_1, false);
+motor Intake = motor(PORT8, ratio6_1, true);
+controller Controller1 = controller(primary);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable

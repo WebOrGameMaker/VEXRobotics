@@ -31,7 +31,7 @@ int turnPrevError; // position of the robot 20 milliseconds ago
 int turnDerivative; // error - prevError (speed)
 int turnTotalError; // totalError = totalError + error
 
-int marginOfError = 30;
+int marginOfError = 20;
 
 int drivePID(int desiredValue, int desiredTurnValue) {
 

@@ -25,10 +25,14 @@ void pre_auton(void) {
 void auton(void) {
   start();
 
+  Flywheel.spin(forward);
+  wait(30, sec);
+  Flywheel.stop();
+  drivePID(1500, 300);
   // drive forward 20 cm
-  drivePID(500, 0);
+  // drivePID(500, 0);
   // turn right 45 degrees
-  drivePID(0, )
+  // drivePID(0, )
   // drive backward 30 cm
   // turn on flywheel for 25 seconds
   // drive forward 10 cm

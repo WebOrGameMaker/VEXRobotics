@@ -17,10 +17,10 @@
 // RM                   motor         17              
 // RB                   motor         16              
 // Flywheel             motor         3               
-// Controller1          controller                    
 // Wings                digital_out   B               
 // IntakePistons        digital_out   A               
 // Intake               motor         8               
+// Controller1          controller                    
 // ---- END VEXCODE CONFIGURED DEVICES ----
 #include <../../common/controller.h>
 using namespace vex;
@@ -36,17 +36,28 @@ void autonomous() {
 
   // turning 1225 is 90 degrees right, -1225 is 90 degrees left
   // drivePID(drive, turn);
-  IntakePistons.set(true);
+
+  // drive forward toward the goal
   drivePID(1000, 0);
-  drivePID(1500, 200);
-  drivePID(0, -1225);
-  Intake.spin(forward);
-  wait(500, msec);
+  // readjust to prevent the next turn from hitting the goal, drive toward the goal again
+  drivePID(1550, 150);
+  // turn left to the goal
+  drivePID(0, -1350);
+  // outtake the matchload
+  Intake.spin(reverse);
+  wait(350, msec);
   Intake.stop();
-  IntakePistons.set(false);
-  drivePID(0, 2500);
-  drivePID(-900, 0);
-  drivePID(900, 0);
+  // prepare to intake the green triball
+  Intake.spin(forward);
+  drivePID(1100, 2250);
+  wait(100, msec);
+  Intake.stop();
+  drivePID(500, 2250);
+  Intake.spin(reverse);
+  wait(450, msec);
+  Intake.stop();
+  drivePID(0, 2300);
+  drivePID(-1250, 0);
 }
 
 int main() {

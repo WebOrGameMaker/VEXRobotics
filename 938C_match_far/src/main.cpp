@@ -33,18 +33,44 @@ void pre_auton(void) {
 
 void auton() {
   start();
-
-  IntakePistons.set(true);
-  drivePID(-1000, 0);
-  drivePID(-1500, -200);
-  drivePID(0, 1225);
-  Intake.spin(forward);
+  // put the matchload in the goal
+  drivePID(1000, 0);
+  drivePID(1400, -150);
+  drivePID(0, 1350);
+  // outtake the matchload
+  Intake.spin(reverse);
   wait(500, msec);
   Intake.stop();
-  IntakePistons.set(false);
-  drivePID(0, 2250);
-  drivePID(900, 0);
-  drivePID(-900, 0);
+  // prepare to intake the green triball
+  Intake.spin(forward);
+  drivePID(800, -1250);
+  Intake.stop();
+  drivePID(0, 1750);
+  Intake.spin(reverse);
+  wait(500, msec);
+  Intake.stop();
+  Intake.spin(forward);
+  drivePID(1000, 1250);
+  wait(250, msec);
+  Intake.stop();
+  drivePID(500, -1750);
+  Intake.spin(reverse);
+  wait(500, msec);
+  Intake.stop();
+  Wings.set(true);
+  drivePID(1250, 0);
+  drivePID(-1000, 0);
+
+  // drivePID(800, -1500);
+  // Intake.spin(forward);
+  // drivePID(1100, -2250);
+  // Intake.stop();
+  // drivePID(500, -2250);
+  // Intake.spin(reverse);
+  // wait(450, msec);
+  // Intake.stop();
+  // drivePID(0, -2300);
+  // drivePID(-1250, 0);
 }
 
 int main() {

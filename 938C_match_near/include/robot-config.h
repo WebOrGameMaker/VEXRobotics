@@ -10,10 +10,10 @@ extern motor RF;
 extern motor RM;
 extern motor RB;
 extern motor Flywheel;
-extern controller Controller1;
 extern digital_out Wings;
 extern digital_out IntakePistons;
 extern motor Intake;
+extern controller Controller1;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
