@@ -9,17 +9,19 @@ void start() {
 
   Wings.set(false);
   IntakePistons.set(false);
+
+  Brain.Screen.print("Edit: 3");
 }
 
-double kP = 0.0075; // proportional
-double kI = 0.0001; // integral
-double kD = 0.00005; // derivatve
+double kP = 0.005; // proportional
+double kI = 0.0002; // integral
+double kD = 0.005; // derivative
 
 double tkP = 0.05; // proportional
 double tkI = 0.001; // integral
-double tkD = 0.001; // derivative
+double tkD = 0.01; // derivative
 
-double turnConversion = 48/36;
+double turnConversion =  48/ 36;
 
 int error; // positive difference between sensor value and desired value (positional)
 int prevError; // position of the robot 20 milliseconds ago
@@ -31,7 +33,7 @@ int turnPrevError; // position of the robot 20 milliseconds ago
 int turnDerivative; // error - prevError (speed)
 int turnTotalError; // totalError = totalError + error
 
-int marginOfError = 20;
+int marginOfError = 25;
 
 int drivePID(int desiredValue, int desiredTurnValue) {
 
@@ -41,7 +43,8 @@ int drivePID(int desiredValue, int desiredTurnValue) {
 
   bool resetDriveSensors = 1;
 
-  while (true) {
+  while(true) {
+
     if (resetDriveSensors) {
       resetDriveSensors = 0;
       LF.setPosition(0, degrees);
@@ -52,29 +55,42 @@ int drivePID(int desiredValue, int desiredTurnValue) {
       RB.setPosition(0, degrees);
     }
   
-    int leftMotorPosition = LF.position(degrees);
-    int rightMotorPosition = RF.position(degrees);
-    
-    /* forward + backward */
+    int leftMotorPosition = LB.position(degrees);
+    int rightMotorPosition = RB.position(degrees);
 
+
+    ////////////
+    //Movement//
+    ////////////
+    
     int avgPosition = (leftMotorPosition + rightMotorPosition) / 2;
+
     // proportional
     error = desiredValue - avgPosition;
+
     // derivative
     derivative = error - prevError;
+
     // integral
     totalError += error;
+
     double lateralMotorPower = error * kP + derivative * kD + totalError * kI;
 
-    /* turning */
-    
+    ///////////
+    //Turning//
+    ///////////
+
     int turnDifference = leftMotorPosition - rightMotorPosition;
+
     // proportional
     turnError = desiredTurnValue - turnDifference;
+
     // derivative
     turnDerivative = turnError - turnPrevError;
+
     // integral    
     turnTotalError += turnError;
+
     double turnMotorPower = turnError * tkP + turnDerivative * tkD + turnTotalError * tkI;
 
     if ((abs(error) < marginOfError && abs(turnError) < marginOfError) || count >= 100) {

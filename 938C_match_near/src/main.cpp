@@ -48,16 +48,6 @@ void autonomous() {
   wait(350, msec);
   Intake.stop();
   // prepare to intake the green triball
-  Intake.spin(forward);
-  drivePID(1100, 2250);
-  wait(100, msec);
-  Intake.stop();
-  drivePID(500, 2250);
-  Intake.spin(reverse);
-  wait(450, msec);
-  Intake.stop();
-  drivePID(0, 2300);
-  drivePID(-1250, 0);
 }
 
 int main() {
