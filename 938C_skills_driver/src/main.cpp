@@ -22,7 +22,8 @@ int main() {
   vexcodeInit();
 
   Competition.drivercontrol(usercontrol);
-
+  
+  // prevent main from exiting with an infite while loop
   while (true) {
     wait(100, msec);
   }

@@ -14,7 +14,7 @@ motor LB = motor(PORT18, ratio6_1, true);
 motor RF = motor(PORT1, ratio6_1, false);
 motor RM = motor(PORT17, ratio6_1, false);
 motor RB = motor(PORT16, ratio6_1, false);
-motor Intake = motor(PORT8, ratio6_1, false);
+motor Intake = motor(PORT8, ratio6_1, true);
 motor Flywheel = motor(PORT3, ratio36_1, false);
 controller Controller1 = controller(primary);
 digital_out Wings = digital_out(Brain.ThreeWirePort.H);
@@ -25,7 +25,6 @@ digital_out IntakePistons = digital_out(Brain.ThreeWirePort.G);
 bool RemoteControlCodeEnabled = true;
 // define variables used for controlling motors based on controller inputs
 bool Controller1LeftShoulderControlMotorsStopped = true;
-bool Controller1RightShoulderControlMotorsStopped = true;
 
 // define a task that will handle monitoring inputs from Controller1
 int rc_auto_loop_function_Controller1() {
@@ -44,18 +43,6 @@ int rc_auto_loop_function_Controller1() {
         Intake.stop();
         // set the toggle so that we don't constantly tell the motor to stop when the buttons are released
         Controller1LeftShoulderControlMotorsStopped = true;
-      }
-      // check the ButtonR1/ButtonR2 status to control Flywheel
-      if (Controller1.ButtonR1.pressing()) {
-        Flywheel.spin(forward);
-        Controller1RightShoulderControlMotorsStopped = false;
-      } else if (Controller1.ButtonR2.pressing()) {
-        Flywheel.spin(reverse);
-        Controller1RightShoulderControlMotorsStopped = false;
-      } else if (!Controller1RightShoulderControlMotorsStopped) {
-        Flywheel.stop();
-        // set the toggle so that we don't constantly tell the motor to stop when the buttons are released
-        Controller1RightShoulderControlMotorsStopped = true;
       }
     }
     // wait before repeating the process

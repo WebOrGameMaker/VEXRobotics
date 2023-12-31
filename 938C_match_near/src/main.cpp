@@ -34,20 +34,7 @@ void pre_auton(void) {
 void autonomous() {
   start();
 
-  // turning 1225 is 90 degrees right, -1225 is 90 degrees left
-  // drivePID(drive, turn);
-
-  // drive forward toward the goal
-  drivePID(1000, 0);
-  // readjust to prevent the next turn from hitting the goal, drive toward the goal again
-  drivePID(1550, 150);
-  // turn left to the goal
-  drivePID(0, -1350);
-  // outtake the matchload
-  Intake.spin(reverse);
-  wait(350, msec);
-  Intake.stop();
-  // prepare to intake the green triball
+  // autonomous code goes here
 }
 
 int main() {
@@ -58,6 +45,7 @@ int main() {
   // Run the pre-autonomous function.
   pre_auton();
 
+  // prevent the main function from exiting with an infinite loop
   while (true) {
     wait(100, msec);
   }

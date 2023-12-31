@@ -35,30 +35,33 @@ void auton() {
   start();
   // put the matchload in the goal
   drivePID(1000, 0);
-  drivePID(1500, -150);
-  drivePID(0, 1500);
+  drivePID(1350, -100);
+  drivePID(-200, 1700);
   // outtake the matchload
   Intake.spin(reverse);
   wait(500, msec);
   Intake.stop();
-  // // prepare to intake the green triball
-  // Intake.spin(forward);
-  // drivePID(800, -1250);
-  // Intake.stop();
-  // drivePID(0, 1750);
-  // Intake.spin(reverse);
-  // wait(500, msec);
-  // Intake.stop();
-  // Intake.spin(forward);
-  // drivePID(1000, 1250);
+  // intake the 1st green triball
+  Intake.spin(forward);
+  drivePID(400, -1800);
+  Intake.stop();
+  // outtake it
+  drivePID(0, 1750);
+  Intake.spin(reverse);
+  wait(400, msec);
+  Intake.stop();
+  // intake the 2nd green triball
+  Intake.spin(forward);
+  drivePID(600, 1850);
   // wait(250, msec);
-  // Intake.stop();
-  // drivePID(500, -1750);
-  // Intake.spin(reverse);
-  // wait(500, msec);
-  // Intake.stop();
-  // drivePID(-1250, 2000);
-  // drivePID(1000, 0);
+  Intake.stop();
+  // turn around and outtake it
+  drivePID(500, -2000);
+  Intake.spin(reverse);
+  wait(400, msec);
+  Intake.stop();
+  drivePID(-1250, 2000);
+  drivePID(1000, 0);
 
   // drivePID(800, -1500);
   // Intake.spin(forward);

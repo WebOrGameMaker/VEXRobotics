@@ -6,22 +6,23 @@ using namespace vex;
 void start() {
   Flywheel.setVelocity(500, percent);
   Intake.setVelocity(150, percent);
-
+  
   Wings.set(false);
   IntakePistons.set(false);
 
-  Brain.Screen.print("Edit: 3");
+  // just to make sure the robot actually downloaded the code
+  Brain.Screen.print("Edit: 5");
 }
 
-double kP = 0.005; // proportional
-double kI = 0.0002; // integral
-double kD = 0.005; // derivative
+double kP = 0.0035; // proportional
+double kI = 0.0001; // integral
+double kD = 0.007; // derivative
 
-double tkP = 0.05; // proportional
-double tkI = 0.001; // integral
-double tkD = 0.01; // derivative
+double tkP = 0.03; // proportional
+double tkI = 0.00005; // integral (really close to 0)
+double tkD = 0.05; // derivative
 
-double turnConversion =  48/ 36;
+double turnConversion =  48/36;
 
 int error; // positive difference between sensor value and desired value (positional)
 int prevError; // position of the robot 20 milliseconds ago
@@ -33,7 +34,7 @@ int turnPrevError; // position of the robot 20 milliseconds ago
 int turnDerivative; // error - prevError (speed)
 int turnTotalError; // totalError = totalError + error
 
-int marginOfError = 25;
+int marginOfError = 20;
 
 int drivePID(int desiredValue, int desiredTurnValue) {
 
