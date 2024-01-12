@@ -44,10 +44,7 @@ void usercontrol(void) {
     
     if (Controller1.ButtonLeft.pressing()) IntakePistons.set(true);
     else if (Controller1.ButtonDown.pressing()) IntakePistons.set(false);
-
-    if (Controller1.ButtonR2.pressing()) Flywheel.spin(reverse);
-    else if (Controller1.ButtonR1.pressing()) Flywheel.stop();
-
+    
     wait(5, msec);
   }
 }

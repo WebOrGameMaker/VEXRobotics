@@ -34,7 +34,24 @@ void pre_auton(void) {
 void autonomous() {
   start();
 
-  // autonomous code goes here
+  // start at the same position as match far
+  IntakePistons.set(true);
+  // turn about 45 degrees left (note the "about")
+  // drive forward by 1.5 feet
+  drivePID(1250, -1300);
+  drivePID(-100, 800);
+  // outtake the preload
+  Intake.spin(reverse);
+  wait(400, msec);
+  Intake.stop();
+  IntakePistons.set(false);
+  // turn 180, ram in the triball with the back
+  drivePID(-800, 2650);
+  // get the corner triball out and touch the bar
+  drivePID(1000, 0);
+  Wings.set(true);
+  drivePID(800, -700);
+  drivePID(1600, -700);
 }
 
 int main() {

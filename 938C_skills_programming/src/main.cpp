@@ -24,40 +24,33 @@ void pre_auton(void) {
 
 void auton(void) {
   start();
-  // Flywheel.spin(reverse);
-  // wait(3, sec);
-  // Flywheel.stop();
-  // drivePID(-3500, -900);
-  // drivePID(-1000, 750);
-  // drivePID(1500, 300);
-  // drive forward 20 cm
-  // drivePID(500, 0);
-  // turn right 45 degrees
-  // drivePID(0, )
-  // drive backward 30 cm
-  // turn on flywheel for 25 seconds
-  // drive forward 10 cm
-  // turn right 90 degrees
-  // drive forward 20 cm
-  // turn left 60 degrees
-  // go forward 50 cm
-  // turn left 90 degrees
-  // open wings
-  // drive forward 50 cm
-  // close wings
-  // drive back 30 cm
-  // turn left 45 degrees
-  // drive forward 50 cm
-  // turn right 135 degrees
-  // open wings
-  // drive forward 50 cm
-  // close wings
-  // drive back 50 cm
-  // turn left 15 degrees
-  // open wings
-  // drive forward 50 cm
-  // close wings
-  // drive back 50 cm
+  // this part takes so long when testing that i will just use a 3-second portion instead
+  Flywheel.spin(reverse);
+  wait(30, sec);
+  Flywheel.stop();
+
+  // drive to the other side and ram the goal
+  drivePID(-2800, -1050);
+  drivePID(-1250, 1000);
+  drivePID(1500, 0);
+  drivePID(-1500, 0);
+
+  // turn around, ram the goal from the front with wings
+  drivePID(1500, - 1750);
+  drivePID(0, -2000);
+  Wings.set(true);
+  drivePID(1500, 0);
+  drivePID(-1500, 0);
+
+  // // ram it again
+  drivePID(1500, 750);
+  drivePID(-1500, 0);
+
+  // // go to the other side and ram it with the back
+  // drivePID(1500, 750);
+  // drivePID(-1000, 1000);
+  // drivePID(1000, 0);
+  // drivePID(-1000, 0);
 }
 
 int main() {

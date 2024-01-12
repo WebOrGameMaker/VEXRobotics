@@ -23,7 +23,7 @@ int main() {
 
   Competition.drivercontrol(usercontrol);
   
-  // prevent main from exiting with an infite while loop
+  // prevent main from exiting with an infite loop
   while (true) {
     wait(100, msec);
   }
