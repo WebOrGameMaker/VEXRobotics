@@ -36,7 +36,7 @@ void autonomous() {
 
   // start at the same position as match far
   IntakePistons.set(true);
-  // turn about 45 degrees left (note the "about")
+  // turn about 45 degrees left
   // drive forward by 1.5 feet
   drivePID(1250, -1300);
   drivePID(-100, 800);

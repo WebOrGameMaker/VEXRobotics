@@ -28,24 +28,20 @@ void auton(void) {
   Flywheel.spin(reverse);
   wait(30, sec);
   Flywheel.stop();
-
   // drive to the other side and ram the goal
   drivePID(-2800, -1050);
   drivePID(-1250, 1000);
   drivePID(1500, 0);
   drivePID(-1500, 0);
-
   // turn around, ram the goal from the front with wings
   drivePID(1500, - 1750);
   drivePID(0, -2000);
   Wings.set(true);
   drivePID(1500, 0);
   drivePID(-1500, 0);
-
-  // // ram it again
+  // ram it again
   drivePID(1500, 750);
   drivePID(-1500, 0);
-
   // // go to the other side and ram it with the back
   // drivePID(1500, 750);
   // drivePID(-1000, 1000);

@@ -33,6 +33,8 @@ void pre_auton(void) {
 
 void auton() {
   start();
+  // open intake pistons
+  IntakePistons.set(true);
   // put the matchload in the goal
   drivePID(1000, 0);
   drivePID(1350, -100);
@@ -43,24 +45,25 @@ void auton() {
   Intake.stop();
   // intake the 1st green triball
   Intake.spin(forward);
-  drivePID(0, -1800);
+  drivePID(0, -1700);
   drivePID(400, 0);
   Intake.stop();
   // outtake it
-  drivePID(0, 1750);
+  drivePID(0, 2000);
   Intake.spin(reverse);
   wait(400, msec);
   Intake.stop();
   // intake the 2nd green triball
   Intake.spin(forward);
-  drivePID(650, 2300);
+  drivePID(650, 2000);
   // wait(250, msec);
   Intake.stop();
   // turn around and outtake it
-  drivePID(600, -2200);
+  drivePID(600, -2400);
   Intake.spin(reverse);
   wait(400, msec);
   Intake.stop();
+  // turn around and ram it with the back
   drivePID(-1300, 2500);
   drivePID(1000, 0);
 }
@@ -73,6 +76,7 @@ int main() {
   // Run the pre-autonomous function.
   pre_auton();
 
+  // prevent main from exiting with an infinite while loop
   while (true) {
     wait(100, msec);
   }
