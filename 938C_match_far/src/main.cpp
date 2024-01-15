@@ -37,7 +37,7 @@ void auton() {
   IntakePistons.set(true);
   // put the matchload in the goal
   drivePID(1000, 0);
-  drivePID(1350, -100);
+  drivePID(1350, -150);
   drivePID(-200, 1650);
   // outtake the matchload
   Intake.spin(reverse);
@@ -76,7 +76,7 @@ int main() {
   // Run the pre-autonomous function.
   pre_auton();
 
-  // prevent main from exiting with an infinite while loop
+  // prevent main from exiting with an infinite loop
   while (true) {
     wait(100, msec);
   }

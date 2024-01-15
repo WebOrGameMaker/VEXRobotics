@@ -11,7 +11,7 @@ void start() {
   IntakePistons.set(false);
 
   // just to make sure the robot actually downloaded the code
-  Brain.Screen.print("Edit: 5");
+  Brain.Screen.print("Edit: 6");
 }
 
 double kP = 0.0035; // proportional
@@ -34,7 +34,7 @@ int turnPrevError; // position of the robot 20 milliseconds ago
 int turnDerivative; // error - prevError (speed)
 int turnTotalError; // totalError = totalError + error
 
-int marginOfError = 20;
+int marginOfError = 25;
 
 int drivePID(int desiredValue, int desiredTurnValue) {
 

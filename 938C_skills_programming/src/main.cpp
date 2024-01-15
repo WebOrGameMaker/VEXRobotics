@@ -25,22 +25,25 @@ void pre_auton(void) {
 void auton(void) {
   start();
   // this part takes so long when testing that i will just use a 3-second portion instead
+  // Flywheel.spin(reverse);
+  // wait(30, sec);
+  // Flywheel.stop();
   Flywheel.spin(reverse);
-  wait(30, sec);
+  wait(40, sec);
   Flywheel.stop();
   // drive to the other side and ram the goal
   drivePID(-2800, -1050);
-  drivePID(-1250, 1000);
+  drivePID(-1500, 1000);
   drivePID(1500, 0);
   drivePID(-1500, 0);
   // turn around, ram the goal from the front with wings
-  drivePID(1500, - 1750);
-  drivePID(0, -2000);
+  drivePID(1500, -1500);
+  drivePID(0, -2750);
   Wings.set(true);
-  drivePID(1500, 0);
-  drivePID(-1500, 0);
+  drivePID(2500, 0);
+  drivePID(-2000, 0);
   // ram it again
-  drivePID(1500, 750);
+  drivePID(2000, 500);
   drivePID(-1500, 0);
   // // go to the other side and ram it with the back
   // drivePID(1500, 750);

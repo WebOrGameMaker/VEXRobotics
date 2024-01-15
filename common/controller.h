@@ -29,7 +29,7 @@ void usercontrol(void) {
     // LB.spin(fwd, left, pct);
     // RB.spin(fwd, right, pct);
 
-    /* slightly higher sens */
+    /* slightly lower sens */
     double left = pow(Controller1.Axis3.value() + Controller1.Axis1.value(), 3) / 10000;
     double right = pow(Controller1.Axis3.value() - Controller1.Axis1.value(), 3) / 10000;
     LF.spin(fwd, left, pct);
