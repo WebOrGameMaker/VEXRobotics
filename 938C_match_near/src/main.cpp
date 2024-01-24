@@ -54,7 +54,7 @@ void autonomous() {
   // the wings interfere with accuracy
   // the zip ties are able to touch the middle bar without crossing over, if the intake's pistons are forward
   IntakePistons.set(true);
-  drivePID(1200, -700);
+  drivePID(1250, -700);
 }
 
 int main() {

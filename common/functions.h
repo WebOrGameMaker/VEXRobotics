@@ -14,13 +14,25 @@ void start() {
   Brain.Screen.print("Edit: 6");
 }
 
-double kP = 0.0035; // proportional
-double kI = 0.0001; // integral
-double kD = 0.007; // derivative
+/* new pid values */
+double kP = 0.03; // proportional
+double kI = 0.00005; // integral
+double kD = 0.001; // derivative
 
-double tkP = 0.03; // proportional
-double tkI = 0.00005; // integral (really close to 0)
-double tkD = 0.05; // derivative
+double tkP = 0.05; // proportional
+double tkI = 0.00005; // integral
+double tkD = 0.001; // derivative
+
+// the drive is much faster and the turning is more accurate (hopefully for extremely small/large values as well)
+
+/* old pid values */
+// double kP = 0.0035; // proportional
+// double kI = 0.0001; // integral
+// double kD = 0.007; // derivative
+
+// double tkP = 0.03; // proportional
+// double tkI = 0.00005; // integral (really close to 0)
+// double tkD = 0.05; // derivative
 
 double turnConversion =  48/36;
 
