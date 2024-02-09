@@ -35,26 +35,22 @@ void autonomous() {
   start();
   // start at the same position as match far
   IntakePistons.set(true);
-  // turn about 45 degrees left
-  // drive forward by 1.5 feet
-  drivePID(1250, -1300);
-  drivePID(-100, 800);
-  // outtake the preload
+  drivePID(250, 0);
+  drivePID(0, -900);
+  drivePID(1200, 0);
+  drivePID(0, 900);
+  drivePID(300, 0);
   Intake.spin(reverse);
-  wait(400, msec);
+  wait(500, msec);
   Intake.stop();
-  IntakePistons.set(false);
-  // turn 180, ram in the triball with the back
-  drivePID(-700, 2650);
-  // get the corner triball out and touch the bar
+  drivePID(0, 2400);
+  drivePID(-650, 0);
   drivePID(1000, 0);
   Wings.set(true);
-  drivePID(800, -700);
-  Wings.set(false);
-  // the wings interfere with accuracy
-  // the zip ties are able to touch the middle bar without crossing over, if the intake's pistons are forward
-  IntakePistons.set(true);
-  drivePID(1250, -700);
+  drivePID(0, -500);
+  drivePID(750, 0);
+  drivePID(0, -750);
+  drivePID(1450, 0);
 }
 
 int main() {

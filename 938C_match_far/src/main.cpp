@@ -33,24 +33,46 @@ void pre_auton(void) {
 
 void auton() {
   start();
-  // pid testing section
-  drivePID(0, 2000);
-  drivePID(0, -2000);
 
   // open intake pistons
-  // IntakePistons.set(true);
+  IntakePistons.set(true);
   // put the matchload in the goal
-  // drivePID(1000, 0);
-  // drivePID(1450, -150);
-  // drivePID(-200, 1650);
-  // // outtake the matchload
-  // Intake.spin(reverse);
-  // wait(500, msec);
-  // Intake.stop();
-                       
-  // drivePID(1500, 2500);
-  // drivePID(-2000, 0);
-  // drivePID(2000, 0);
+  drivePID(1000, 0);
+  drivePID(1500, -50);
+  drivePID(0, 1450);
+  // outtake the matchload
+  Intake.spin(reverse);
+  wait(400, msec);
+  Intake.stop();
+  // intake the 1st triball
+  Intake.spin(forward);
+  drivePID(500, -1550);
+  wait(400, msec);
+  Intake.stop();
+  // outtake it
+  drivePID(300, 1500);
+  Intake.spin(reverse);
+  wait(400, msec);
+  Intake.stop();
+  // intake the 2nd triball
+  Intake.spin(forward);
+  drivePID(1250, 2250);
+  // outtake it
+  drivePID(500, -2250);
+  Intake.spin(reverse);
+  wait(500, msec);
+  Intake.stop();
+  // intake the 3rd triball
+  Intake.spin(forward);
+  drivePID(1000, -2000);
+  wait(400, msec);
+  Intake.stop();
+  drivePID(750, -3000);
+  Intake.spin(reverse);
+  wait(500, msec);
+  Intake.stop();
+  drivePID(-1000, -2400);
+  drivePID(1000, 0);
   // drivePID(-2000, 0);
   // drivePID(1500, 0);
   // // // intake the 1st green triball
