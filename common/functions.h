@@ -17,11 +17,11 @@ void start() {
 /* new pid values */
 double kP = 0.03; // proportional
 double kI = 0.00001; // integral
-double kD = 0.002; // derivative
+double kD = 0.003; // derivative
 
 double tkP = 0.04; // proportional
 double tkI = 0.00004; // integral
-double tkD = 0.001; // derivative
+double tkD = 0.002; // derivative
 
 // the drive is much faster and the turning is more accurate (hopefully for extremely small/large values as well)
 
@@ -46,7 +46,7 @@ int turnPrevError; // position of the robot 20 milliseconds ago
 int turnDerivative; // error - prevError (speed)
 int turnTotalError; // totalError = totalError + error
 
-int marginOfError = 32;
+int marginOfError = 25;
 
 int drivePID(int desiredValue, int desiredTurnValue) {
 

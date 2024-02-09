@@ -38,7 +38,7 @@ void auton() {
   IntakePistons.set(true);
   // put the matchload in the goal
   drivePID(1000, 0);
-  drivePID(1500, -50);
+  drivePID(1500, -100);
   drivePID(0, 1450);
   // outtake the matchload
   Intake.spin(reverse);
@@ -46,7 +46,7 @@ void auton() {
   Intake.stop();
   // intake the 1st triball
   Intake.spin(forward);
-  drivePID(500, -1550);
+  drivePID(300, -1500);
   wait(400, msec);
   Intake.stop();
   // outtake it
@@ -56,15 +56,15 @@ void auton() {
   Intake.stop();
   // intake the 2nd triball
   Intake.spin(forward);
-  drivePID(1250, 2250);
+  drivePID(1250, 2500);
   // outtake it
-  drivePID(500, -2250);
+  drivePID(750, -2500);
   Intake.spin(reverse);
   wait(500, msec);
   Intake.stop();
   // intake the 3rd triball
   Intake.spin(forward);
-  drivePID(1000, -2000);
+  drivePID(1200, -1750);
   wait(400, msec);
   Intake.stop();
   drivePID(750, -3000);
